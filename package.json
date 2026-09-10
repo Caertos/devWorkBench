@@ -1,0 +1,32 @@
+{
+  "name": "devWorkBench",
+  "version": "0.1.0",
+  "bin": {
+    "dwb": "./bin/dwb.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node ./bin/dwb.js",
+    "type-check": "tsc --noEmit",
+    "fmt": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.24.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@11.24.0",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "prettier": "^3.9.6",
+    "tsup": "^8.5.1",
+    "typescript": "^7.0.2"
+  }
+}
