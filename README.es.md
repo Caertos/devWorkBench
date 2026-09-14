@@ -3,12 +3,14 @@
 Herramienta de desarrollo local para proyectos Node.js.
 
 ## Tech Stack
+
 - TypeScript
 - pnpm
 - tsup (bundler)
 - node:http (servidor nativo)
 
 ## Estructura del proyecto
+
 ```
 devWorkBench/
 ├── bin/dwb.js          ← Entry point CLI
@@ -24,6 +26,7 @@ devWorkBench/
 ## Changelog
 
 ### v0.1.0 (2026-09-09)
+
 - HU-01: CLI ejecutable con `dwb`
 - Servidor HTTP nativo con health check (`/health`)
 - Puerto configurable via variable de entorno `PORT`
@@ -31,4 +34,5 @@ devWorkBench/
 - Logger con prefijos `[dwb]`
 
 ## Licencia
+
 ISC
