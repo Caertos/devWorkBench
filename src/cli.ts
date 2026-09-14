@@ -4,12 +4,13 @@ import { log } from "./logger";
 
 const projectRoot = detectProjectRoot(process.cwd());
 if (!projectRoot) {
-  log.error("No project root found. Please ensure you are in a valid project directory.");
+  log.error(
+    "No project root found. Please ensure you are in a valid project directory.",
+  );
   log.error("Make sure there is a package.json file in your project root.");
   process.exit(1);
 }
-log.success(`Project root detected at: ${projectRoot}`); 
-
+log.success(`Project root detected at: ${projectRoot}`);
 
 log.info("Starting Dev-Workbench server...");
 

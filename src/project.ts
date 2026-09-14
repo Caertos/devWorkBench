@@ -3,13 +3,20 @@ import { resolve, dirname } from "node:path";
 
 function detectProjectRoot(startDir: string): string | null {
   let currentDir = resolve(startDir);
-  const rootDir = resolve("/");
-  while (currentDir !== rootDir) {
+
+  while (true) {
     if (existsSync(resolve(currentDir, "package.json"))) {
       console.log(`Project root found at: ${currentDir}`);
       return currentDir;
     }
-    currentDir = dirname(currentDir);
+
+    const parentDir = dirname(currentDir);
+
+    if (parentDir === currentDir) {
+      break;
+    }
+
+    currentDir = parentDir;
   }
   return null;
 }

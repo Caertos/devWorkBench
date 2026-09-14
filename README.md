@@ -25,18 +25,28 @@ devWorkBench/
 ```
 
 ## Changelog
+
 ### v0.1.0
---- 
+
+---
+
 ##### 2026-09-09
+
 HU-01: Executable CLI with `dwb`
+
 - Native HTTP server with health check (`/health`)
 - Configurable port via `PORT` environment variable
 - Clean shutdown with SIGINT (Ctrl+C)
 - Logger with `[dwb]` prefixes
+
 ---
+
 ##### 2026-09-13
+
 HU-02: Project root detector
+
 - The dependency automatically detects the project root folder
+
 ---
 
 ## License
