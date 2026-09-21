@@ -18,7 +18,8 @@ devWorkBench/
 │   ├── cli.ts      	    ← Lógica CLI
 │   ├── server.ts   	    ← Servidor HTTP
 │   ├── logger.ts   	    ← Utilidad de logs
-│   └── project.ts		← Detector de raíz de proyecto
+│   ├── project.ts      ← Detector de raíz y lector de package.json
+│   └── session.ts      ← Estado de sesión (raíz, info del paquete)
 ├── package.json
 ├── tsconfig.json
 └── tsup.config.ts
@@ -46,6 +47,16 @@ HU-01: CLI ejecutable con `dwb`
 HU-02: Detector de raiz de proyecto
 
 - La dependencia detecta automaticamente la carpeta raíz
+
+---
+
+##### 2026-09-20
+
+HU-03: Detectar package.json
+
+- Lee y parsea el `package.json` desde la raíz del proyecto
+- Almacena campos seleccionados (`name`, `version`, `description`, `type`) en el estado de sesión
+- Disponible para el resto de la herramienta vía `session.packageInfo`
 
 ---
 
