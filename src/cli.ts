@@ -1,16 +1,18 @@
-import { detectProjectRoot } from "./project";
+import { detectProjectRoot, readPackageJson } from "./project";
 import { startServer } from "./server";
+import { session } from "./session";
 import { log } from "./logger";
 
-const projectRoot = detectProjectRoot(process.cwd());
-if (!projectRoot) {
+session.projectRoot = detectProjectRoot(process.cwd());
+
+if (!session.projectRoot) {
   log.error(
     "No project root found. Please ensure you are in a valid project directory.",
   );
   log.error("Make sure there is a package.json file in your project root.");
   process.exit(1);
 }
-log.success(`Project root detected at: ${projectRoot}`);
+log.success(`Project root detected at: ${session.projectRoot}`);
 
 log.info("Starting Dev-Workbench server...");
 
@@ -23,6 +25,8 @@ try {
   const assignedPort = typeof addr === "object" && addr ? addr.port : "?";
 
   log.success(`Server running at http://localhost:${assignedPort}`);
+  session.packageInfo = readPackageJson(session.projectRoot);
+  log.info(`Project Data: ${JSON.stringify(session.packageInfo, null, 2)}`);
   log.info("Press Ctrl+C to stop");
 
   process.on("SIGINT", () => {
