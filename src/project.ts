@@ -1,12 +1,14 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
+import { log } from "./logger";
+import type { PackageInfo } from "./session";
 
 function detectProjectRoot(startDir: string): string | null {
   let currentDir = resolve(startDir);
 
   while (true) {
     if (existsSync(resolve(currentDir, "package.json"))) {
-      console.log(`Project root found at: ${currentDir}`);
+      log.success(`Project root found at: ${currentDir}`);
       return currentDir;
     }
 
@@ -21,4 +23,17 @@ function detectProjectRoot(startDir: string): string | null {
   return null;
 }
 
-export { detectProjectRoot };
+function readPackageJson(projectRoot: string) {
+  const packageJsonPath = resolve(projectRoot, "package.json");
+  const raw = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
+  const packageJsonContent: PackageInfo = {
+    name: raw.name,
+    version: raw.version,
+    description: raw.description,
+    type: raw.type,
+  };
+
+  return packageJsonContent;
+}
+
+export { detectProjectRoot, readPackageJson };

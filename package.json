@@ -1,6 +1,7 @@
 {
   "name": "devWorkBench",
   "version": "0.1.0",
+  "description": "All-in-one development workbench for databases, APIs, and project inspection",
   "bin": {
     "dwb": "./bin/dwb.js"
   },
