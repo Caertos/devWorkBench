@@ -15,9 +15,10 @@ Herramienta de desarrollo local para proyectos Node.js.
 devWorkBench/
 ├── bin/dwb.js          ← Entry point CLI
 ├── src/
-│   ├── cli.ts      	    ← Lógica CLI
-│   ├── server.ts   	    ← Servidor HTTP
-│   ├── logger.ts   	    ← Utilidad de logs
+│   ├── cli.ts          ← Lógica CLI
+│   ├── server.ts       ← Servidor HTTP
+│   ├── port.ts         ← Validación del puerto preferido
+│   ├── logger.ts       ← Utilidad de logs
 │   ├── project.ts      ← Detector de raíz y lector de package.json
 │   └── session.ts      ← Estado de sesión (raíz, info del paquete)
 ├── package.json
@@ -27,38 +28,7 @@ devWorkBench/
 
 ## Changelog
 
-### v0.1.0
-
----
-
-##### 2026-09-09
-
-HU-01: CLI ejecutable con `dwb`
-
-- Servidor HTTP nativo con health check (`/health`)
-- Puerto configurable via variable de entorno `PORT`
-- Parada limpia con SIGINT (Ctrl+C)
-- Logger con prefijos `[dwb]`
-
----
-
-##### 2026-09-13
-
-HU-02: Detector de raiz de proyecto
-
-- La dependencia detecta automaticamente la carpeta raíz
-
----
-
-##### 2026-09-20
-
-HU-03: Detectar package.json
-
-- Lee y parsea el `package.json` desde la raíz del proyecto
-- Almacena campos seleccionados (`name`, `version`, `description`, `type`) en el estado de sesión
-- Disponible para el resto de la herramienta vía `session.packageInfo`
-
----
+Ver [CHANGELOG.es.md](CHANGELOG.es.md).
 
 ## Licencia
 

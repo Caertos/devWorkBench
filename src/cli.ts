@@ -2,6 +2,7 @@ import { detectProjectRoot, readPackageJson } from "./project";
 import { startServer } from "./server";
 import { session } from "./session";
 import { log } from "./logger";
+import { resolvePreferredPort } from "./port";
 
 session.projectRoot = detectProjectRoot(process.cwd());
 
@@ -16,7 +17,7 @@ log.success(`Project root detected at: ${session.projectRoot}`);
 
 log.info("Starting Dev-Workbench server...");
 
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 0;
+const port = resolvePreferredPort(process.env.PORT);
 
 try {
   const dwbServer = await startServer(port);
