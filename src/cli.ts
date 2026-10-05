@@ -4,15 +4,16 @@ import { session } from "./session";
 import { log } from "./logger";
 import { resolvePreferredPort } from "./port";
 
-session.projectRoot = detectProjectRoot(process.cwd());
+const projectRoot = detectProjectRoot(process.cwd());
 
-if (!session.projectRoot) {
+if (!projectRoot) {
   log.error(
     "No project root found. Please ensure you are in a valid project directory.",
   );
   log.error("Make sure there is a package.json file in your project root.");
   process.exit(1);
 }
+session.projectRoot = projectRoot;
 log.success(`Project root detected at: ${session.projectRoot}`);
 
 log.info("Starting Dev-Workbench server...");
